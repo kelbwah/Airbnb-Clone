@@ -326,9 +326,7 @@ app.post('/api/login', async (req, res) => {
 });
 
 
-const PORT = 3001;
-
-app.listen(3001);
+app.listen(process.env.PORT || 3001);
 
 // mongoose.connect(process.env.MONGO_URL, {
 //     useNewUrlParser: true,

@@ -35,7 +35,7 @@ const s3 = new S3Client({
 
 app.use(cors({
     credentials: true,
-    origin: process.env.CLIENT_URL,
+    origin: "*",
 }));
 app.use(express.json());
 app.use(cookieParser());
@@ -317,13 +317,12 @@ app.post('/login', async (req, res) => {
 });
 
 
-const PORT = process.env.PORT || 3001;
+const PORT = 3001;
 
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
-    // RentingList.insertMany(fakeRentingData);
     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
 }).catch((err) => {
     console.log(`${err} did not connect`);

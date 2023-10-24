@@ -49,7 +49,7 @@ function App() {
       setShowDestinationModal(!showDestinationModal);
   }
 
-  async function isHost() {
+  async function checkIfHost() {
     if (isUser){
       const {data} = await axios.get(`${user._id}/ishost`);
       if (data[0] === true) {
@@ -64,7 +64,7 @@ function App() {
   useEffect(() => {
     
     const getRentingLists = async () => {
-      await getTest();
+      await checkIfHost();
     }
 
     getRentingLists();

@@ -1,3 +1,209 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    @variants responsive {
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      .no-scrollbar::-webkit-scrollbar {
+          display: none;
+      }
+
+      /* Hide scrollbar for IE, Edge and Firefox */
+      .no-scrollbar {
+          -ms-overflow-style: none;  /* IE and Edge */
+          scrollbar-width: none;  /* Firefox */
+      }
+    }
+
+    @keyframes fadeInnerz {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes moveAndFade {
+        0% {
+          transform: translateY(100%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+    @keyframes moveAndFadeDestinationModalFirst {
+      0% {
+        transform: translateY(-110%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes moveAndFadeDestinationModalSecond {
+      0% {
+        transform: translateY(-20%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes moveAndFadeDestinationModalThird {
+      0% {
+        transform: translateY(-110%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes moveAndFadeDestinationModalFourth {
+      0% {
+        transform: translateY(-110%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes moveAndFadeDestinationModalFifth {
+      0% {
+        transform: translateY(200%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes pulse{
+      0% {
+        background-color: rgb(190, 190, 190);
+        color: rgb(190, 190, 190);
+      }
+      100%{
+        background-color: rgb(156, 154, 154);
+        color: rgb(156, 154, 154);
+      }
+    }
+      
+    .animate-move-and-fade {
+    animation: moveAndFade 0.5s ease-in-out forwards;
+    }
+
+    .fade-innerz {
+      animation: fadeInnerz 1.3s ease-in-out forwards;
+    }
+
+    .animate-move-and-fade-destination-modal-first {
+      animation: moveAndFadeDestinationModalFirst 0.5s ease-out forwards;
+    }
+
+    .animate-move-and-fade-destination-modal-second {
+      animation: moveAndFadeDestinationModalSecond 0.5s ease-out forwards;
+    }
+    .animate-move-and-fade-destination-modal-third {
+      animation: moveAndFadeDestinationModalThird 0.5s ease-out forwards;
+      animation-delay: 0.05s;
+    }
+
+    .animate-move-and-fade-destination-modal-fourth {
+      animation: moveAndFadeDestinationModalFourth 0.5s ease-out forwards;
+      animation-delay: 0.08s;
+    }
+
+    .animate-move-and-fade-destination-modal-fifth {
+      animation: moveAndFadeDestinationModalFifth 0.5s ease-out forwards;
+    }
+
+    .result-cards{
+      margin-top: 20px;
+      justify-items: center;
+      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+      row-gap: 2rem;
+      padding-left: 20px;
+      padding-right: 20px;
+      column-gap: 6.3rem;
+      row-gap: 2rem;
+    }
+
+    .result-cards-wishlist{
+      justify-items: center;
+      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+      row-gap: 2rem;
+      padding-left: 20px;
+      padding-right: 20px;
+      column-gap: 6.3rem;
+      row-gap: 2rem;
+    }
+
+    .result-cards-airbnb-your-home{
+      justify-items: center;
+      justify-content: center;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+      row-gap: 2rem;
+      padding-left: 20px;
+      padding-right: 20px;
+      column-gap: 6.3rem;
+      row-gap: 2rem;
+    }
+
+    .card{
+      width: 310px;
+      height: 375px;
+      margin-bottom: 0.5rem;
+      border-radius: 0.75rem;
+    }
+
+    .loading-card{
+      width: 310px;
+      height: 375px;
+      margin-bottom: 0.5rem;
+      border-radius: 0.75rem;
+      background-color: rgb(190, 190, 190);
+      color: rgb(190, 190, 190);
+      animation: pulse 0.5s infinite alternate;
+    }
+
+    .gray-rectangle{
+      display: inline-block;
+      background-color: rgb(190, 190, 190);
+      color: rgb(190, 190, 190);
+      padding: 4px 8px;
+      margin-right: 8px;
+      border-radius: 4px;
+      animation: pulse 0.5s infinite alternate;
+
+    }
+
+    .card-sm{
+      width: 100%;
+      height: 100%;
+      margin-bottom: 0.5rem;
+      border-radius: 0.75rem;
+    }
+
+}
+
+
+

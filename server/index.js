@@ -31,8 +31,6 @@ const s3 = new S3Client({
     },
 });
 
-
-
 app.use(cors({
     credentials: true,
     origin: "https://airbnb-clone-kelbwah.vercel.app",

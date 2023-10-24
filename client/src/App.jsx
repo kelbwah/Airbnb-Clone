@@ -49,13 +49,16 @@ function App() {
       setShowDestinationModal(!showDestinationModal);
   }
 
-  async function getTest() {
-    const {data} = await axios.get(`${user._id}/ishost`);
-    if (data[0] === true) {
-      setIsHost([true, data[1]]);
-    } else if (data[0] === false) {
-      setIsHost(false);
+  async function isHost() {
+    if (isUser){
+      const {data} = await axios.get(`${user._id}/ishost`);
+      if (data[0] === true) {
+        setIsHost([true, data[1]]);
+      } else if (data[0] === false) {
+        setIsHost(false);
+      }
     }
+    
   }
 
   useEffect(() => {

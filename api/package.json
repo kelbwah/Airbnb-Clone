@@ -15,5 +15,9 @@
     "path": "^0.12.7",
     "sharp": "^0.32.6",
     "sharp-multer": "^0.3.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js"
   }
 }

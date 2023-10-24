@@ -65,12 +65,10 @@ export default function AirbnbYourHome(props){
         photoFormData.append('photo', photo);
 
         const {data} = await axios.post('photo/upload', photoFormData);
-        console.log(data);
         if (data) {
 
             formOptions.photos.push(data);
             setIsError([false, '']);
-            setIsCongrats([true, 'Photo uploaded!']);
 
             // Using this to update state of photo grid
             let formOptionsPhotosCopy = [...formOptions.photos];

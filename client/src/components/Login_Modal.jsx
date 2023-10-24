@@ -51,10 +51,6 @@ export default function Login_Modal(props) {
                 setIsError(true);
                 console.error(err);
             }
-            // } finally{
-            //     setIsLoading(false);
-            //     props.changeLoginModal();
-            // }
             
         } else if (isLoginOrRegister === "login") {
             try{

@@ -21,7 +21,6 @@ export default function AirbnbYourHome(props){
 
     const user = useSelector((state) => state.user);
     const [isError, setIsError] = useState([false, ""]);
-    const [isCongrats, setIsCongrats] = useState([false, ""]);
     const [isLoading, setIsLoading] = useState([false, ""]);
 
     const navigate = useNavigate();

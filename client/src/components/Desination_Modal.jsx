@@ -1,6 +1,4 @@
 import { useState, useEffect } from "react";
-// import { Label, TextInput, Button } from 'flowbite-react';
-// import { HiSearch } from 'react-icons/hi';
 import worldIcons from "../assets/Icons/world_map_icons";
 import { DestinationFilter, WeeksFilter, GuestsFilter, ClosedDestinationFilter, ClosedWeeksFilter, ClosedGuestsFilter, DestinationFooter } from "./Destination_Modal_Filters";
 
@@ -99,8 +97,6 @@ export default function Destination_Modal(props){
     function changeOpenModal(){
         props.changeDestinationModal();
     }
-
-    //put this in the asset folder later
 
     const availableDestinations = [
         "Anywhere", "Europe", "Italy", "Southeast Asia",

@@ -3,7 +3,6 @@ import { DateRange } from 'react-date-range'
 import { Button } from 'flowbite-react';
 import 'react-date-range/dist/styles.css'; // main css file for react-date-range
 import 'react-date-range/dist/theme/default.css'; // theme css file for react-date-range
-import { differenceInCalendarDays, parse } from "date-fns";
 
 export default function CalendarAirbnbYourHome(props){
     const [ranges, setRanges] = useState([

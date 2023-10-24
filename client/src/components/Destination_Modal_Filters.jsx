@@ -1,6 +1,6 @@
-import { Label, TextInput, Button } from 'flowbite-react';
+import { Button } from 'flowbite-react';
 import { HiSearch } from 'react-icons/hi';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { DateRange } from 'react-date-range'
 import 'react-date-range/dist/styles.css'; // main css file for react-date-range
 import 'react-date-range/dist/theme/default.css'; // theme css file for react-date-range

@@ -85,7 +85,6 @@ export default function Trips(props) {
                         resetNavbar={resetNavbar}
                         isDisplayTotalBeforeTaxes={props.isDisplayTotalBeforeTaxes}
                         />
-                        {/* xl:mt-108 lg:mt-108 md:mt-108 mt-108 */}
                         <div className="flex flex-col gap-8 w-screen h-full mt-20 lg:px-32 md:px-14 px-8 py-12 justify-center items-center overflow-y-auto">
                             
                             {allTrips.length > 0 ? (

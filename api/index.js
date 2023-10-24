@@ -33,7 +33,7 @@ const s3 = new S3Client({
 
 app.use(cors({
     credentials: true,
-    origin: "http://localhost:3001",
+    origin: process.env.VITE_API_BASE_URL,
 }));
 app.use(express.json());
 app.use(cookieParser());
@@ -324,7 +324,6 @@ app.post('/api/login', async (req, res) => {
     }
    
 });
-
 
 app.listen(process.env.PORT || 3001);
 

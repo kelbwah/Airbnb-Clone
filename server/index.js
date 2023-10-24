@@ -58,7 +58,7 @@ const upload = multer({
     })
 });
 
-app.get("/logout", async (req, res, next) => {
+app.get("/api/logout", async (req, res, next) => {
     try{
         let date = new Date();
         date.setDate(date.getDate() - 1);
@@ -68,7 +68,7 @@ app.get("/logout", async (req, res, next) => {
     }
 }) 
 
-app.get("/rentinglists", async (req, res) => {
+app.get("/api/rentinglists", async (req, res) => {
     try{
         const allRentingLists = await RentingList.find();
         res.status(200).json(allRentingLists);
@@ -77,7 +77,7 @@ app.get("/rentinglists", async (req, res) => {
     }
 })
 
-app.get('/:userId/ishost', async (req, res) => {
+app.get('/api/:userId/ishost', async (req, res) => {
     try{
         let userId = req.params.userId;
         RentingList.findOne({host: userId}).then((rentingList) => {
@@ -92,7 +92,7 @@ app.get('/:userId/ishost', async (req, res) => {
     }
 })
 
-app.get("/rentinglist/:id", async(req, res) => {
+app.get("/api/rentinglist/:id", async(req, res) => {
     try{
         const id = req.params.id;
         const rentingList = await RentingList.findById(id);
@@ -108,7 +108,7 @@ app.get("/rentinglist/:id", async(req, res) => {
     }
 })
 
-app.get("/user/:userId", async(req, res) => {
+app.get("/api/user/:userId", async(req, res) => {
     try{
         
         const id = req.params.userId;
@@ -128,7 +128,7 @@ app.get("/user/:userId", async(req, res) => {
     }
 })
 
-app.get('/user/wishlists/:userId', async (req, res) => {
+app.get('/api/user/wishlists/:userId', async (req, res) => {
     try{
         const userId = req.params.userId;
         const foundUser = await User.findById(userId);
@@ -144,7 +144,7 @@ app.get('/user/wishlists/:userId', async (req, res) => {
     }
 })
 
-app.put('/cancelreservation/:rentingListId/:userId', async (req, res) => {
+app.put('/api/cancelreservation/:rentingListId/:userId', async (req, res) => {
     try{
         const userId = req.params.userId;
         const rentingListId = req.params.rentingListId;
@@ -167,7 +167,7 @@ app.put('/cancelreservation/:rentingListId/:userId', async (req, res) => {
 })
 
 
-app.put('/wishlist/addOrRemove/:userId/:rentingListId', async(req, res) => {
+app.put('/api/wishlist/addOrRemove/:userId/:rentingListId', async(req, res) => {
     try{
         const userId = req.params.userId;
         const rentingListId = req.params.rentingListId;
@@ -187,7 +187,7 @@ app.put('/wishlist/addOrRemove/:userId/:rentingListId', async(req, res) => {
 });
 
 
-app.put('/reserve/:rentingListId/:userId', async(req, res) => {
+app.put('/api/reserve/:rentingListId/:userId', async(req, res) => {
     try{
         const userId = req.params.userId;
         const reservationId = req.params.rentingListId;
@@ -218,7 +218,7 @@ app.put('/reserve/:rentingListId/:userId', async(req, res) => {
     }
 });
 
-app.post("/airbnbyourhome", upload.none(), async (req, res) => {
+app.post("/api/airbnbyourhome", upload.none(), async (req, res) => {
     try{
         setTimeout(() => {
             const {host, photos, title, startDate, endDate, priceBeforeTax, priceAfterTax, description, type, numGuests, numBedrooms, numBaths, numBeds, country} = req.body;
@@ -251,7 +251,7 @@ app.post("/airbnbyourhome", upload.none(), async (req, res) => {
     }
 });
 
-app.post('/photo/upload', upload.single('photo'), async (req, res) => {
+app.post('/api/photo/upload', upload.single('photo'), async (req, res) => {
     try{   
         res.status(200).json(profilePath);
     } catch (err) {
@@ -259,7 +259,7 @@ app.post('/photo/upload', upload.single('photo'), async (req, res) => {
     }
 })
 
-app.post("/register", upload.single("picture"), async (req, res, next) => {
+app.post("/api/register", upload.single("picture"), async (req, res, next) => {
     const {email, password, firstName, lastName} = req.body;
     try{
         const hashedPassword = bcrypt.hashSync(password, bcryptSalt);
@@ -287,7 +287,7 @@ app.post("/register", upload.single("picture"), async (req, res, next) => {
     }
 });
 
-app.post('/login', async (req, res) => {
+app.post('/api/login', async (req, res) => {
     
     try{
         const {email, password} = req.body;

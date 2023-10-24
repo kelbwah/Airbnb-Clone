@@ -67,7 +67,7 @@ export default function Renting_List(props){
     return (
         <div>
 
-            {!isLoading ? (
+            {!isLoading && initialRentingList ? (
                 <div className="w-full justify-center items-center content-center lg:px-20 md:px-20 px-8 animate-fadeIn ease-in-out duration-100">
                     <div className="result-cards translate-y-48 pb-10 place-content-center">
                         {updateRentingListsFilter().length > 0 ? (updateRentingListsFilter().map((rentingList) => { 

@@ -33,7 +33,7 @@ const s3 = new S3Client({
 
 app.use(cors({
     credentials: true,
-    origin: "*",
+    origin: "http://localhost:3001",
 }));
 app.use(express.json());
 app.use(cookieParser());
@@ -57,6 +57,7 @@ const upload = multer({
 });
 
 app.get("/api/logout", async (req, res, next) => {
+    mongoose.connect(process.env.MONGO_URL);
     try{
         let date = new Date();
         date.setDate(date.getDate() - 1);
@@ -67,6 +68,7 @@ app.get("/api/logout", async (req, res, next) => {
 }) 
 
 app.get("/api/rentinglists", async (req, res) => {
+    mongoose.connect(process.env.MONGO_URL);
     try{
         const allRentingLists = await RentingList.find();
         res.status(200).json(allRentingLists);
@@ -76,6 +78,7 @@ app.get("/api/rentinglists", async (req, res) => {
 })
 
 app.get('/api/:userId/ishost', async (req, res) => {
+    mongoose.connect(process.env.MONGO_URL);
     try{
         let userId = req.params.userId;
         RentingList.findOne({host: userId}).then((rentingList) => {
@@ -91,6 +94,7 @@ app.get('/api/:userId/ishost', async (req, res) => {
 })
 
 app.get("/api/rentinglist/:id", async(req, res) => {
+    mongoose.connect(process.env.MONGO_URL);
     try{
         const id = req.params.id;
         const rentingList = await RentingList.findById(id);
@@ -107,6 +111,7 @@ app.get("/api/rentinglist/:id", async(req, res) => {
 })
 
 app.get("/api/user/:userId", async(req, res) => {
+    mongoose.connect(process.env.MONGO_URL);
     try{
         
         const id = req.params.userId;
@@ -127,6 +132,7 @@ app.get("/api/user/:userId", async(req, res) => {
 })
 
 app.get('/api/user/wishlists/:userId', async (req, res) => {
+    mongoose.connect(process.env.MONGO_URL);
     try{
         const userId = req.params.userId;
         const foundUser = await User.findById(userId);
@@ -143,6 +149,7 @@ app.get('/api/user/wishlists/:userId', async (req, res) => {
 })
 
 app.put('/api/cancelreservation/:rentingListId/:userId', async (req, res) => {
+    mongoose.connect(process.env.MONGO_URL);
     try{
         const userId = req.params.userId;
         const rentingListId = req.params.rentingListId;
@@ -166,6 +173,7 @@ app.put('/api/cancelreservation/:rentingListId/:userId', async (req, res) => {
 
 
 app.put('/api/wishlist/addOrRemove/:userId/:rentingListId', async(req, res) => {
+    mongoose.connect(process.env.MONGO_URL);
     try{
         const userId = req.params.userId;
         const rentingListId = req.params.rentingListId;
@@ -186,6 +194,7 @@ app.put('/api/wishlist/addOrRemove/:userId/:rentingListId', async(req, res) => {
 
 
 app.put('/api/reserve/:rentingListId/:userId', async(req, res) => {
+    mongoose.connect(process.env.MONGO_URL);
     try{
         const userId = req.params.userId;
         const reservationId = req.params.rentingListId;
@@ -217,6 +226,7 @@ app.put('/api/reserve/:rentingListId/:userId', async(req, res) => {
 });
 
 app.post("/api/airbnbyourhome", upload.none(), async (req, res) => {
+    mongoose.connect(process.env.MONGO_URL);
     try{
         setTimeout(() => {
             const {host, photos, title, startDate, endDate, priceBeforeTax, priceAfterTax, description, type, numGuests, numBedrooms, numBaths, numBeds, country} = req.body;
@@ -250,6 +260,7 @@ app.post("/api/airbnbyourhome", upload.none(), async (req, res) => {
 });
 
 app.post('/api/photo/upload', upload.single('photo'), async (req, res) => {
+    mongoose.connect(process.env.MONGO_URL);
     try{   
         res.status(200).json(profilePath);
     } catch (err) {
@@ -258,6 +269,7 @@ app.post('/api/photo/upload', upload.single('photo'), async (req, res) => {
 })
 
 app.post("/api/register", upload.single("picture"), async (req, res, next) => {
+    mongoose.connect(process.env.MONGO_URL);
     const {email, password, firstName, lastName} = req.body;
     try{
         const hashedPassword = bcrypt.hashSync(password, bcryptSalt);
@@ -286,7 +298,7 @@ app.post("/api/register", upload.single("picture"), async (req, res, next) => {
 });
 
 app.post('/api/login', async (req, res) => {
-    
+    mongoose.connect(process.env.MONGO_URL);
     try{
         const {email, password} = req.body;
         const foundUser = await User.findOne({email: email});
@@ -316,13 +328,15 @@ app.post('/api/login', async (req, res) => {
 
 const PORT = 3001;
 
-mongoose.connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-}).then(() => {
-    app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
-}).catch((err) => {
-    console.log(`${err} did not connect`);
-});
+app.listen(3001);
+
+// mongoose.connect(process.env.MONGO_URL, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+// }).then(() => {
+//     app.listen(PORT, () => console.log(`Server Port: ${PORT}`));
+// }).catch((err) => {
+//     console.log(`${err} did not connect`);
+// });
 
 
